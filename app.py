@@ -16,6 +16,13 @@ def classifydata_api(model_id):
     apireturn_json = helper.classify_data(content, model_id)
     return apireturn_json
 
+@app.route('/api/v1/<model_id>/predictevalues', methods=['POST'])
+def predictevalues(model_id):
+    content = request.json
+    helper = Helper()
+    apireturn_json = helper.predict_values_from_model(model_id, content)
+    return apireturn_json
+
 
 if __name__ == '__main__':
     app.run()
